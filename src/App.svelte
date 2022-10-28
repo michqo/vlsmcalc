@@ -1,8 +1,10 @@
 <script lang="ts">
-  import Counter from "./lib/Counter.svelte";
+  import Form from "./lib/Form.svelte";
 </script>
 
 <main class="flex flex-col items-center mt-10">
-  <h1 class="text-indigo-500 text-6xl font-bold">Subnet Generator</h1>
-  <Counter />
+  <div class="max-w-md">
+    <h1 class="text-indigo-500 text-5xl font-bold">Subnet Generator</h1>
+    <Form />
+  </div>
 </main>
