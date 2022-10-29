@@ -1,31 +1,28 @@
 <script lang="ts">
-  import { network, subnets } from "../stores";
-  import LabeledInput from "./controls/LabeledInput.svelte";
+  import { network, hosts, subnetsCount, cidrMask } from "@utils/stores";
+  import { formSchema } from "@utils/types";
+  import NetworkInput from "./controls/NetworkInput.svelte";
+  import SubnetInput from "./controls/SubnetInput.svelte";
   import HostInputs from "./controls/HostInputs.svelte";
 
-  let subnetsProp = 3;
+  let subnetsProp = 3; // Switch to store
 
-  function generate(e: any) {
+  function onSubmit(e: any) {
     console.log("submit!");
   }
 </script>
 
-<form class="max-w-sm mt-16" on:submit|preventDefault={generate}>
-  <LabeledInput
-    title="Network"
-    placeholder="192.168.1.0/24"
-    id="network"
-    value={network}
-  />
-  <LabeledInput title="Subnets" placeholder="3" id="subnets" value={subnets}>
+<form class="max-w-sm mt-16" on:submit|preventDefault={onSubmit}>
+  <NetworkInput />
+  <SubnetInput>
     <button
       type="button"
       class="text-white ml-2 px-2 py-1 rounded-md bg-indigo-500 focus:ring"
-      on:click={() => (subnetsProp = parseInt($subnets, 10))}
+      on:click={() => (subnetsProp = parseInt($subnetsCount, 10))}
     >
       Apply
     </button>
-  </LabeledInput>
+  </SubnetInput>
 
   <HostInputs subnets={subnetsProp} />
 
