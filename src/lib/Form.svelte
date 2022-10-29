@@ -10,7 +10,7 @@
   }
 </script>
 
-<form class="w-full max-w-sm mt-20" on:submit|preventDefault={generate}>
+<form class="max-w-sm mt-16" on:submit|preventDefault={generate}>
   <LabeledInput
     title="Network"
     placeholder="192.168.1.0/24"

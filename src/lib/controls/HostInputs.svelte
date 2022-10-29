@@ -6,7 +6,7 @@
   $: if (isNaN(subnets)) subnets = 3;
 </script>
 
-<h2 class="text-gray-500 font-bold mt-16 mb-3">Number of hosts</h2>
+<h2 class="text-gray-500 font-bold mt-10 mb-3">Number of hosts</h2>
 
 <div class="flex flex-col">
   {#each Array(subnets) as _, i}
