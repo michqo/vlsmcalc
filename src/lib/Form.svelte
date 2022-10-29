@@ -10,12 +10,17 @@
   let subnetsProp = 3; // Switch to store
 
   function onSubmit(e: any) {
-    $error = !formSchema.isValidSync({
-      networkAddr: $network,
-      cidrMask: $cidrMask,
-      subnets: $subnetsCount,
-      hosts: $hosts,
-    });
+    try {
+      formSchema.validateSync({
+        networkAddr: $network,
+        cidrMask: $cidrMask,
+        subnets: $subnetsCount,
+        hosts: $hosts,
+      });
+      $error = "";
+    } catch (e) {
+      $error = e["errors"][0];
+    }
   }
 </script>
 
@@ -33,9 +38,9 @@
 
   <HostInputs subnets={subnetsProp} />
 
-  <div class="h-6 mt-6">
-    {#if $error}
-      <p transition:fade class="text-lg text-red-700">Error occured</p>
+  <div class="h-6 mb-4 mt-6">
+    {#if $error.length != 0}
+      <p transition:fade class="text-lg text-red-700">{$error}</p>
     {/if}
   </div>
 
