@@ -1,7 +1,7 @@
 import { type Writable, writable } from "svelte/store";
-import type { Subnet } from "./types";
+import type { Errors, Subnet } from "./types";
 
-const error: Writable<string> = writable("");
+const errors: Writable<Errors> = writable({});
 
 const network: Writable<string> = writable("192.168.1.0");
 const cidrMask: Writable<string> = writable("24");
@@ -10,4 +10,4 @@ const hosts: Writable<string[]> = writable([]);
 
 const subnets: Writable<Subnet[]> = writable([]);
 
-export { error, network, cidrMask, subnetsCount, hosts, subnets };
+export { errors, network, cidrMask, subnetsCount, hosts, subnets };

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
 
-  import { error, network, hosts, subnetsCount, cidrMask } from "@utils/stores";
+  import { errors, network, hosts, subnetsCount, cidrMask } from "@utils/stores";
   import { formSchema } from "@utils/types";
   import NetworkInput from "./controls/NetworkInput.svelte";
   import SubnetInput from "./controls/SubnetInput.svelte";
@@ -10,16 +10,19 @@
   let subnetsProp = 3; // Switch to store
 
   function onSubmit(e: any) {
+    const data = {
+      networkAddr: $network,
+      cidrMask: $cidrMask,
+      subnets: $subnetsCount,
+      hosts: $hosts,
+    };
+    $errors = {};
     try {
-      formSchema.validateSync({
-        networkAddr: $network,
-        cidrMask: $cidrMask,
-        subnets: $subnetsCount,
-        hosts: $hosts,
-      });
-      $error = "";
+      formSchema.validateSync(data, { abortEarly: false });
     } catch (e) {
-      $error = e["errors"][0];
+      e.inner.forEach(i => {
+        $errors[`${i.path}`] = i.message;
+      });
     }
   }
 </script>
@@ -35,14 +38,12 @@
       Apply
     </button>
   </SubnetInput>
+  <!--TODO: Show alert on error instead -->
+  {#if $errors.subnets}
+    <p transition:fade class="text-lg text-red-700 my-3">{$errors.subnets}</p>
+  {/if}
 
   <HostInputs subnets={subnetsProp} />
-
-  <div class="h-6 mb-4 mt-6">
-    {#if $error.length != 0}
-      <p transition:fade class="text-lg text-red-700">{$error}</p>
-    {/if}
-  </div>
 
   <div class="flex justify-center">
     <button

@@ -30,6 +30,13 @@ const formSchema = yup.object().shape({
     .typeError("Invalid number of hosts"),
 });
 
+interface Errors {
+  networkAddr: string;
+  cidrMask: string;
+  subnets: string;
+  hosts: string;
+}
+
 interface Subnet {
   hostsNeeded: string;
   // hostsAvailable: number;
@@ -40,4 +47,4 @@ interface Subnet {
   // broadcast: string;
 }
 
-export { type Subnet, formSchema };
+export { type Subnet, type Errors, formSchema };

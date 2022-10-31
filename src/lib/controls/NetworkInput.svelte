@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { network, cidrMask } from "@utils/stores";
+  import { errors, network, cidrMask } from "@utils/stores";
   import Input from "./Input.svelte";
 </script>
 
@@ -8,10 +8,10 @@
     <label for="network" class="text-gray-500 font-bold pr-1">Network</label>
   </div>
   <div class="w-2/4">
-    <Input id="network" value={network} />
+    <Input id="network" value={network} error={$errors.networkAddr} />
   </div>
   <div class="w-1/4 flex flex-row items-center">
     <p class="font-bold mx-1">/</p>
-    <Input id="cidr" value={cidrMask} />
+    <Input id="cidr" value={cidrMask} error={$errors.cidrMask} />
   </div>
 </div>

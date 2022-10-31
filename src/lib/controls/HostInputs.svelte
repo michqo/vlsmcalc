@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { hosts } from "@utils/stores";
+  import { errors, hosts } from "@utils/stores";
 
   export let subnets: number;
 
@@ -13,7 +13,7 @@
   {#each $hosts as _, i}
     <input
       type="number"
-      class="appearance-none border-2 border-gray-200 w-1/2 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-gray-400"
+      class="border-2 border-gray-300 w-1/2 py-2 px-4 text-gray-700 leading-tight focus:outline-none {$errors[`hosts[${i}]`] ? 'border-red-500' : ''}"
       placeholder="0"
       bind:value={$hosts[i]}
     />
