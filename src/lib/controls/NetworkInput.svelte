@@ -3,7 +3,7 @@
   import Input from "./Input.svelte";
 </script>
 
-<div class="flex items-center flex-row mb-5">
+<div class="flex items-center flex-row mb-3">
   <div class="w-1/4">
     <label for="network" class="text-gray-500 font-bold pr-1">Network</label>
   </div>

@@ -48,7 +48,7 @@
   <div class="flex justify-center">
     <button
       type="submit"
-      class="text-lg mt-8 px-3 py-2 border-2 rounded-md border-indigo-600 focus:bg-indigo-200 focus:ring"
+      class="text-lg px-3 py-2 border-2 rounded-md border-indigo-600 focus:bg-indigo-200 focus:ring"
     >
       Generate
     </button>

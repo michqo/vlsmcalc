@@ -9,7 +9,7 @@
 
 <h2 class="text-gray-500 font-bold mt-10 mb-0.5">Number of hosts</h2>
 
-<div class="flex flex-col">
+<div class="flex flex-col mb-16">
   {#each $hosts as _, i}
     <input
       type="number"
