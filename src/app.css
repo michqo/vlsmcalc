@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.error {
+  @apply border-red-500 focus:border-red-500;
+}
