@@ -1,28 +1,32 @@
 <script lang="ts">
-  import { fade } from "svelte/transition";
-
   import { formSchema } from "@utils/types";
-  import { errors, network, hosts, subnetsCount, cidrMask, subnets } from "@utils/stores";
+  import {
+    errors,
+    network,
+    hosts,
+    subnets,
+    parsedSubnets,
+    cidrMask,
+    generatedSubnets,
+  } from "@utils/stores";
   import { generateSubnets } from "@utils/helper";
   import NetworkInput from "./controls/NetworkInput.svelte";
   import SubnetInput from "./controls/SubnetInput.svelte";
   import HostInputs from "./controls/HostInputs.svelte";
 
-  let subnetsProp = 3; // Switch to store
-
   function onSubmit(e: any) {
     const data = {
       networkAddr: $network,
       cidrMask: $cidrMask,
-      subnets: $subnetsCount,
+      subnets: $subnets,
       hosts: $hosts,
     };
     $errors = {};
     try {
       const validated = formSchema.validateSync(data, { abortEarly: false });
-      $subnets = generateSubnets(validated);
+      $generatedSubnets = generateSubnets(validated);
     } catch (e) {
-      e.inner.forEach(i => {
+      e.inner.forEach((i: any) => {
         $errors[`${i.path}`] = i.message;
       });
     }
@@ -39,12 +43,12 @@
     <button
       type="button"
       class="text-white ml-2 px-2 py-1 rounded-md bg-indigo-500 focus:ring"
-      on:click={() => (subnetsProp = parseInt($subnetsCount, 10))}
+      on:click={() => ($parsedSubnets = parseInt($subnets, 10))}
     >
       Apply
     </button>
   </SubnetInput>
-  <HostInputs subnets={subnetsProp} />
+  <HostInputs />
 
   <div class="flex justify-center">
     <button

@@ -34,14 +34,14 @@ interface FormData {
   networkAddr: string;
   cidrMask: number;
   subnets: number;
-  hosts: string[];
-};
+  hosts: number[];
+}
 
 interface Errors {
-  networkAddr: string;
-  cidrMask: string;
-  subnets: string;
-  hosts: string;
+  networkAddr?: string;
+  cidrMask?: string;
+  subnets?: string;
+  hosts?: string;
 }
 
 interface Subnet {

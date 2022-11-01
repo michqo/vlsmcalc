@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { subnets } from "@utils/stores";
+  import { generatedSubnets } from "@utils/stores";
 
   const headerClass =
     "px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider";
@@ -9,7 +9,7 @@
     "px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900";
 </script>
 
-{#if $subnets.length != 0}
+{#if $generatedSubnets.length != 0}
   <table
     class="mt-10 mb-20 block min-w-full overflow-x-auto divide-y divide-slate-200"
   >
@@ -25,7 +25,7 @@
     </tr>
 
     <tbody>
-      {#each $subnets as subnet, i}
+      {#each $generatedSubnets as subnet, i}
         <tr class="border-b">
           <td class={numberClass}>{i + 1}</td>
           <td class={itemClass}> {subnet.hostsNeeded} </td>

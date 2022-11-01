@@ -5,9 +5,18 @@ const errors: Writable<Errors> = writable({});
 
 const network: Writable<string> = writable("192.168.1.0");
 const cidrMask: Writable<string> = writable("24");
-const subnetsCount: Writable<string> = writable("3");
+const subnets: Writable<string> = writable("3");
+const parsedSubnets: Writable<number> = writable(3);
 const hosts: Writable<string[]> = writable([]);
 
-const subnets: Writable<Subnet[]> = writable([]);
+const generatedSubnets: Writable<Subnet[]> = writable([]);
 
-export { errors, network, cidrMask, subnetsCount, hosts, subnets };
+export {
+  errors,
+  network,
+  cidrMask,
+  subnets,
+  parsedSubnets,
+  hosts,
+  generatedSubnets,
+};
