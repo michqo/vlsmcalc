@@ -27,7 +27,7 @@
   }
 
   $: $errors.networkAddr && alert(`Error: ${$errors.networkAddr}`);
-  $: $errors.cidrMask && alert(`Error: ${$errors.networkAddr}`);
+  $: $errors.cidrMask && alert(`Error: ${$errors.cidrMask}`);
   $: $errors.subnets && alert(`Error: ${$errors.subnets}`);
 </script>
 
