@@ -25,6 +25,10 @@
       });
     }
   }
+
+  $: $errors.networkAddr && alert(`Error: ${$errors.networkAddr}`);
+  $: $errors.cidrMask && alert(`Error: ${$errors.networkAddr}`);
+  $: $errors.subnets && alert(`Error: ${$errors.subnets}`);
 </script>
 
 <form class="max-w-sm mt-16" on:submit|preventDefault={onSubmit}>
@@ -38,11 +42,6 @@
       Apply
     </button>
   </SubnetInput>
-  <!--TODO: Show alert on error instead -->
-  {#if $errors.subnets}
-    <p transition:fade class="text-lg text-red-700 my-3">{$errors.subnets}</p>
-  {/if}
-
   <HostInputs subnets={subnetsProp} />
 
   <div class="flex justify-center">
