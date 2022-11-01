@@ -31,7 +31,7 @@
   $: $errors.subnets && alert(`Error: ${$errors.subnets}`);
 </script>
 
-<form class="max-w-sm mt-16" on:submit|preventDefault={onSubmit}>
+<form class="max-w-xs md:max-w-sm mt-16" on:submit|preventDefault={onSubmit}>
   <NetworkInput />
   <SubnetInput>
     <button
