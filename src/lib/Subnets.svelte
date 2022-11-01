@@ -29,12 +29,12 @@
         <tr class="border-b">
           <td class={numberClass}>{i + 1}</td>
           <td class={itemClass}> {subnet.hostsNeeded} </td>
-          <td class={itemClass}> 510 </td>
+          <td class={itemClass}> {subnet.availableHosts} </td>
           <td class={itemClass}> {subnet.networkAddr} </td>
           <td class={itemClass}> /{subnet.slash} </td>
-          <td class={itemClass}> 255.255.254.0 </td>
-          <td class={itemClass}> 192.168.0.1 - 192.168.1.254 </td>
-          <td class={itemClass}> 192.168.1.255 </td>
+          <td class={itemClass}> {subnet.mask} </td>
+          <td class={itemClass}> {subnet.usableRange} </td>
+          <td class={itemClass}> {subnet.broadcast} </td>
         </tr>
       {/each}
     </tbody>

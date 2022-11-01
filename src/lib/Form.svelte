@@ -2,10 +2,9 @@
   import { formSchema } from "@utils/types";
   import {
     errors,
-    network,
+    ip,
     hosts,
     subnets,
-    parsedSubnets,
     cidrMask,
     generatedSubnets,
   } from "@utils/stores";
@@ -16,7 +15,7 @@
 
   function onSubmit(e: any) {
     const data = {
-      networkAddr: $network,
+      ip: $ip,
       cidrMask: $cidrMask,
       subnets: $subnets,
       hosts: $hosts,
@@ -32,7 +31,7 @@
     }
   }
 
-  $: $errors.networkAddr && alert(`Error: ${$errors.networkAddr}`);
+  $: $errors.ip && alert(`Error: ${$errors.ip}`);
   $: $errors.cidrMask && alert(`Error: ${$errors.cidrMask}`);
   $: $errors.subnets && alert(`Error: ${$errors.subnets}`);
 </script>

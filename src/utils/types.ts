@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const formSchema = yup.object().shape({
-  networkAddr: yup
+  ip: yup
     .string()
     .matches(
       /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/,
@@ -31,14 +31,14 @@ const formSchema = yup.object().shape({
 });
 
 interface FormData {
-  networkAddr: string;
+  ip: string;
   cidrMask: number;
   subnets: number;
   hosts: number[];
 }
 
 interface Errors {
-  networkAddr?: string;
+  ip?: string;
   cidrMask?: string;
   subnets?: string;
   hosts?: string;
@@ -46,12 +46,12 @@ interface Errors {
 
 interface Subnet {
   hostsNeeded: number;
-  // hostsAvailable: number;
+  availableHosts: number;
   networkAddr: string;
   slash: number;
-  // mask: string;
-  // usableRange: string;
-  // broadcast: string;
+  mask: string;
+  usableRange: string;
+  broadcast: string;
 }
 
 export { type Subnet, type Errors, type FormData, formSchema };
