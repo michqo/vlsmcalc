@@ -39,15 +39,7 @@
 
 <form class="max-w-xs md:max-w-sm mt-16" on:submit|preventDefault={onSubmit}>
   <NetworkInput />
-  <SubnetInput>
-    <button
-      type="button"
-      class="text-white ml-2 px-2 py-1 rounded-md bg-indigo-500 focus:ring"
-      on:click={() => ($parsedSubnets = parseInt($subnets, 10))}
-    >
-      Apply
-    </button>
-  </SubnetInput>
+  <SubnetInput />
   <HostInputs />
 
   <div class="flex justify-center">
