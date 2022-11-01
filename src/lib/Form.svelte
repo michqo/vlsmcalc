@@ -1,8 +1,9 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
 
-  import { errors, network, hosts, subnetsCount, cidrMask } from "@utils/stores";
   import { formSchema } from "@utils/types";
+  import { errors, network, hosts, subnetsCount, cidrMask, subnets } from "@utils/stores";
+  import { generateSubnets } from "@utils/helper";
   import NetworkInput from "./controls/NetworkInput.svelte";
   import SubnetInput from "./controls/SubnetInput.svelte";
   import HostInputs from "./controls/HostInputs.svelte";
@@ -18,7 +19,8 @@
     };
     $errors = {};
     try {
-      formSchema.validateSync(data, { abortEarly: false });
+      const validated = formSchema.validateSync(data, { abortEarly: false });
+      $subnets = generateSubnets(validated);
     } catch (e) {
       e.inner.forEach(i => {
         $errors[`${i.path}`] = i.message;

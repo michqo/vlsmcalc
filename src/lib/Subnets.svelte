@@ -31,7 +31,7 @@
           <td class={itemClass}> {subnet.hostsNeeded} </td>
           <td class={itemClass}> 510 </td>
           <td class={itemClass}> {subnet.networkAddr} </td>
-          <td class={itemClass}> /23 </td>
+          <td class={itemClass}> /{subnet.slash} </td>
           <td class={itemClass}> 255.255.254.0 </td>
           <td class={itemClass}> 192.168.0.1 - 192.168.1.254 </td>
           <td class={itemClass}> 192.168.1.255 </td>

@@ -6,7 +6,7 @@
 <main class="flex flex-col items-center mt-10">
   <h1 class="text-indigo-500 text-4xl md:text-5xl text-center font-bold">Subnet Generator</h1>
   <Form />
-  <div class="max-w-6xl mt-10">
+  <div class="max-w-sm md:max-w-2xl lg:max-w-6xl mt-10">
     <Subnets />
   </div>
 </main>
