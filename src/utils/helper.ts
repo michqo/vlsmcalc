@@ -1,5 +1,7 @@
 import type { Subnet, FormData, NetworkInfo } from "./types";
 
+// TODO: Change up the algorithm a bit
+
 const encodeIP = (ip: string): string =>
   ip
     .split(".")
@@ -112,7 +114,7 @@ function generateSubnets(formData: FormData): [Subnet[], NetworkInfo] {
   let data: Subnet[] = [];
   let currentNetwork = getNetworkAddress(
     encodeIP(formData.ip),
-    formData.cidrMask
+    getCidrMask(formData.hosts[0])
   );
   const networkInfo: NetworkInfo = {
     network: currentNetwork,
