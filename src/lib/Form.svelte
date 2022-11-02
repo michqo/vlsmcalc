@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { formSchema } from "@utils/types";
+  import formSchema from "@utils/types";
   import {
     errors,
     ip,
@@ -7,6 +7,7 @@
     subnets,
     cidrMask,
     generatedSubnets,
+    networkInfo,
   } from "@utils/stores";
   import { generateSubnets } from "@utils/helper";
   import NetworkInput from "./controls/NetworkInput.svelte";
@@ -23,7 +24,9 @@
     $errors = {};
     try {
       const validated = formSchema.validateSync(data, { abortEarly: false });
-      $generatedSubnets = generateSubnets(validated);
+      const generatedData = generateSubnets(validated);
+      $generatedSubnets = generatedData[0];
+      $networkInfo = generatedData[1];
     } catch (e) {
       e.inner.forEach((i: any) => {
         $errors[`${i.path}`] = i.message;

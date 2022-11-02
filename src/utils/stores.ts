@@ -1,5 +1,5 @@
 import { type Writable, writable } from "svelte/store";
-import type { Errors, Subnet } from "./types";
+import type { Errors, Subnet, NetworkInfo } from "./types";
 
 const errors: Writable<Errors> = writable({});
 
@@ -10,6 +10,7 @@ const parsedSubnets: Writable<number> = writable(3);
 const hosts: Writable<string[]> = writable([]);
 
 const generatedSubnets: Writable<Subnet[]> = writable([]);
+const networkInfo: Writable<NetworkInfo> = writable({} as NetworkInfo);
 
 export {
   errors,
@@ -19,4 +20,5 @@ export {
   parsedSubnets,
   hosts,
   generatedSubnets,
+  networkInfo,
 };

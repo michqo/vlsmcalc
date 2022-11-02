@@ -54,4 +54,12 @@ interface Subnet {
   broadcast: string;
 }
 
-export { type Subnet, type Errors, type FormData, formSchema };
+interface NetworkInfo {
+  network: string;
+  slash: number;
+  availableHosts: number;
+  neededHosts: number;
+}
+
+export type { Subnet, Errors, FormData, NetworkInfo };
+export default formSchema;

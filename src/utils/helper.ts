@@ -1,4 +1,4 @@
-import type { Subnet, FormData } from "./types";
+import type { Subnet, FormData, NetworkInfo } from "./types";
 
 const encodeIP = (ip: string): string =>
   ip
@@ -108,12 +108,20 @@ const calculateSubnet = (network: string, host: number): [Subnet, string] => {
   ];
 };
 
-function generateSubnets(formData: FormData): Subnet[] {
+function generateSubnets(formData: FormData): [Subnet[], NetworkInfo] {
   let data: Subnet[] = [];
   let currentNetwork = getNetworkAddress(
     encodeIP(formData.ip),
     formData.cidrMask
   );
+  const networkInfo: NetworkInfo = {
+    network: currentNetwork,
+    slash: formData.cidrMask,
+    availableHosts: Math.pow(2, 32 - formData.cidrMask) - 2,
+    neededHosts: formData.hosts.reduce((total, current) => {
+      return total + current;
+    }, 0),
+  };
   // Required to sort hosts by descending order
   formData.hosts.sort((a, b) => {
     if (a < b) return 1;
@@ -127,7 +135,7 @@ function generateSubnets(formData: FormData): Subnet[] {
 
     data.push(subnet[0]);
   }
-  return data;
+  return [data, networkInfo];
 }
 
 export { generateSubnets };
