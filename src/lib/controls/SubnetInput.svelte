@@ -11,7 +11,7 @@
     <Input id="subnets" value={subnets} error={$errors.subnets} />
     <button
       type="button"
-      class="text-white ml-2 px-2 py-1 rounded-md bg-indigo-500 focus:ring"
+      class="text-white ml-2 px-2 py-1 rounded-md bg-indigo-600 focus:ring"
       on:click={() => ($parsedSubnets = parseInt($subnets, 10))}
     >
       Apply
