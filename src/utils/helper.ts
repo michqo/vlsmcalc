@@ -127,8 +127,8 @@ function generateSubnets(formData: FormData): [Subnet[], NetworkInfo] {
   };
   // Required to sort hosts by descending order
   formData.hosts.sort((a, b) => {
-    if (a < b) return 1;
-    if (a > b) return -1;
+    if (a.number < b.number) return 1;
+    if (a.number > b.number) return -1;
     return 0;
   });
 
