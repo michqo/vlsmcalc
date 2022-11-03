@@ -21,21 +21,19 @@ const formSchema = yup.object().shape({
   hosts: yup
     .array()
     .of(
-      yup
-        .number()
-        .min(1, "Minimum number of hosts per subnet is 1")
-        .max(16777214, "Maximum number of hosts per subnet is 16777214")
-        .typeError("Invalid number of hosts")
+      yup.object().shape({
+        name: yup.string(),
+        number: yup
+          .number()
+          .min(1, "Minimum number of hosts per subnet is 1")
+          .max(16777214, "Maximum number of hosts per subnet is 16777214")
+          .typeError("Invalid number of hosts"),
+      })
     )
     .typeError("Invalid number of hosts"),
 });
 
-interface FormData {
-  ip: string;
-  cidrMask: number;
-  subnets: number;
-  hosts: number[];
-}
+type FormData = yup.InferType<typeof formSchema>;
 
 interface Errors {
   ip?: string;
@@ -45,6 +43,7 @@ interface Errors {
 }
 
 interface Subnet {
+  name: string;
   hostsNeeded: number;
   availableHosts: number;
   networkAddr: string;
@@ -61,5 +60,10 @@ interface NetworkInfo {
   neededHosts: number;
 }
 
-export type { Subnet, Errors, FormData, NetworkInfo };
+interface Host {
+  name: string;
+  number: number;
+}
+
+export type { Subnet, Errors, FormData, NetworkInfo, Host };
 export default formSchema;

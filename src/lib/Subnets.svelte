@@ -32,9 +32,9 @@
     </tr>
 
     <tbody>
-      {#each $generatedSubnets as subnet, i}
+      {#each $generatedSubnets as subnet}
         <tr class="border-b">
-          <td class={numberClass}>{i + 1}</td>
+          <td class={numberClass}>{subnet.name}</td>
           <td class={itemClass}> {subnet.hostsNeeded} </td>
           <td class={itemClass}> {subnet.availableHosts} </td>
           <td class={itemClass}> {subnet.networkAddr} </td>

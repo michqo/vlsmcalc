@@ -1,4 +1,4 @@
-import type { Subnet, FormData, NetworkInfo } from "./types";
+import type { Subnet, FormData, NetworkInfo, Host } from "./types";
 
 // TODO: Change up the algorithm a bit
 
@@ -81,8 +81,8 @@ const cidrMaskToMask = (cidrMask: number): string => {
   return decodeIP(encodedMask);
 };
 
-const calculateSubnet = (network: string, host: number): [Subnet, string] => {
-  const cidrMask = getCidrMask(host);
+const calculateSubnet = (network: string, host: Host): [Subnet, string] => {
+  const cidrMask = getCidrMask(host.number);
   const mask = cidrMaskToMask(cidrMask);
   const encodedIP = encodeIP(network);
   const broadcast = getBroadcastAddress(encodedIP, cidrMask);
@@ -94,7 +94,8 @@ const calculateSubnet = (network: string, host: number): [Subnet, string] => {
 
   return [
     {
-      hostsNeeded: host,
+      name: host.name,
+      hostsNeeded: host.number,
       availableHosts: usableHosts,
       networkAddr: network,
       slash: cidrMask,
@@ -114,14 +115,14 @@ function generateSubnets(formData: FormData): [Subnet[], NetworkInfo] {
   let data: Subnet[] = [];
   let currentNetwork = getNetworkAddress(
     encodeIP(formData.ip),
-    getCidrMask(formData.hosts[0])
+    getCidrMask(formData.hosts[0].number)
   );
   const networkInfo: NetworkInfo = {
     network: currentNetwork,
     slash: formData.cidrMask,
     availableHosts: Math.pow(2, 32 - formData.cidrMask) - 2,
     neededHosts: formData.hosts.reduce((total, current) => {
-      return total + current;
+      return total + current.number;
     }, 0),
   };
   // Required to sort hosts by descending order
