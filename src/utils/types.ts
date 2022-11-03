@@ -10,11 +10,13 @@ const formSchema = yup.object().shape({
     .typeError("Network address is invalid"),
   cidrMask: yup
     .number()
+    .integer("Invalid CIDR netmask")
     .min(1, "Minimum number of CIDR netmask is 1")
     .max(31, "Maximum number of CIDR netmask is 31")
     .typeError("Invalid CIDR netmask"),
   subnets: yup
     .number()
+    .integer("Invalid number of subnets")
     .min(1, "Minimum number of subnets is 1")
     .max(2097157, "Maximum number of subnets is 2097157")
     .typeError("Invalid number of subnets"),
