@@ -46,6 +46,7 @@ interface Subnet {
   name: string;
   hostsNeeded: number;
   availableHosts: number;
+  unusedHosts: number;
   networkAddr: string;
   slash: number;
   mask: string;

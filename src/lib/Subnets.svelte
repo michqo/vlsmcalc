@@ -24,6 +24,7 @@
       <th scope="col" class={headerClass}>No.</th>
       <th scope="col" class={headerClass}>Hosts Needed</th>
       <th scope="col" class={headerClass}>Hosts Available</th>
+      <th scope="col" class={headerClass}>Unused hosts</th>
       <th scope="col" class={headerClass}>Network Address</th>
       <th scope="col" class={headerClass}>Slash</th>
       <th scope="col" class={headerClass}>Mask</th>
@@ -37,6 +38,7 @@
           <td class={numberClass}>{subnet.name}</td>
           <td class={itemClass}> {subnet.hostsNeeded} </td>
           <td class={itemClass}> {subnet.availableHosts} </td>
+          <td class={itemClass}> {subnet.unusedHosts} </td>
           <td class={itemClass}> {subnet.networkAddr} </td>
           <td class={itemClass}> /{subnet.slash} </td>
           <td class={itemClass}> {subnet.mask} </td>

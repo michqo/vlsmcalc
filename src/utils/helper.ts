@@ -97,6 +97,7 @@ const calculateSubnet = (network: string, host: Host): [Subnet, string] => {
       name: host.name,
       hostsNeeded: host.number,
       availableHosts: usableHosts,
+      unusedHosts: usableHosts - host.number,
       networkAddr: network,
       slash: cidrMask,
       mask: mask,
