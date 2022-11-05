@@ -34,9 +34,9 @@
     }
   }
 
-  $: $errors.ip && alert(`Error: ${$errors.ip}`);
-  $: $errors.cidrMask && alert(`Error: ${$errors.cidrMask}`);
-  $: $errors.subnets && alert(`Error: ${$errors.subnets}`);
+  $: $errors.ip && alert($errors.ip);
+  $: $errors.cidrMask && alert($errors.cidrMask);
+  $: $errors.subnets && alert($errors.subnets);
 </script>
 
 <form class="max-w-xs md:max-w-sm mt-16" on:submit|preventDefault={onSubmit}>
