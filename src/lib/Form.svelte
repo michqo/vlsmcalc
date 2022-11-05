@@ -19,7 +19,7 @@
       ip: $ip,
       cidrMask: $cidrMask,
       subnets: $subnets,
-      hosts: $hosts,
+      hosts: structuredClone($hosts),
     };
     $errors = {};
     try {
