@@ -14,11 +14,12 @@
 
 <style>
   :root {
-    background: rgb(238, 242, 255);
-    background: radial-gradient(
-      circle,
-      rgba(238, 242, 255, 1) 0%,
-      rgba(165, 180, 252, 1) 100%
+    background: rgb(226, 232, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(226, 232, 255, 1) 0%,
+      rgba(206, 223, 255, 1) 50%,
+      rgba(216, 229, 255, 1) 100%
     );
   }
 </style>

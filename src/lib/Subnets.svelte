@@ -18,7 +18,7 @@
   </p>
   <p class={pClass}>Your subnets need {neededHosts} hosts.</p>
   <table
-    class="mt-2 mb-20 block min-w-full overflow-x-auto divide-y divide-slate-200"
+    class="mt-2 mb-20 block min-w-full overflow-x-auto divide-y divide-indigo-600"
   >
     <tr>
       <th scope="col" class={headerClass}>No.</th>
@@ -34,7 +34,7 @@
 
     <tbody>
       {#each $generatedSubnets as subnet}
-        <tr class="border-b">
+        <tr class="border-b border-indigo-400">
           <td class={numberClass}>{subnet.name}</td>
           <td class={itemClass}> {subnet.hostsNeeded} </td>
           <td class={itemClass}> {subnet.availableHosts} </td>
