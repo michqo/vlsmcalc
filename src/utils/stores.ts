@@ -5,8 +5,8 @@ const errors: Writable<Errors> = writable({});
 
 const ip: Writable<string> = writable("192.168.1.0");
 const cidrMask: Writable<string> = writable("24");
-const subnets: Writable<string> = writable("3");
-const parsedSubnets: Writable<number> = writable(3);
+const subnets: Writable<string> = writable("2");
+const parsedSubnets: Writable<number> = writable(2);
 const hosts: Writable<Host[]> = writable([]);
 
 const generatedSubnets: Writable<Subnet[]> = writable([]);
