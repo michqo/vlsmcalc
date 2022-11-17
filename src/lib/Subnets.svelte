@@ -21,7 +21,7 @@
     class="mt-2 mb-20 block min-w-full overflow-x-auto divide-y divide-indigo-600"
   >
     <tr>
-      <th scope="col" class={headerClass}>No.</th>
+      <th scope="col" class={headerClass}>Name</th>
       <th scope="col" class={headerClass}>Hosts Needed</th>
       <th scope="col" class={headerClass}>Hosts Available</th>
       <th scope="col" class={headerClass}>Unused hosts</th>
