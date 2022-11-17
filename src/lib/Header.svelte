@@ -8,5 +8,5 @@
       >VLSM Calculator
     </a>
   </h1>
-  <h2 class="mt-1 text-slate-600">Does subnetting for you</h2>
+  <h2 class="mt-1 text-slate-700">Does subnetting for you</h2>
 </div>
