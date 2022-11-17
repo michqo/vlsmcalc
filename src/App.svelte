@@ -2,15 +2,20 @@
   import Form from "./lib/Form.svelte";
   import Subnets from "./lib/Subnets.svelte";
   import Header from "./lib/Header.svelte";
+  import Footer from "./lib/Footer.svelte";
 </script>
 
-<Header />
-<main class="flex flex-col items-center mt-10">
-  <Form />
-  <div class="max-w-sm md:max-w-2xl lg:max-w-6xl mt-16">
-    <Subnets />
-  </div>
-</main>
+<div class="flex flex-col min-h-screen">
+  <Header />
+  <main class="flex flex-col items-center mt-10">
+    <Form />
+    <div class="max-w-sm md:max-w-2xl lg:max-w-6xl mt-16">
+      <Subnets />
+    </div>
+  </main>
+  <div class="flex-1" />
+  <Footer />
+</div>
 
 <style>
   :root {
