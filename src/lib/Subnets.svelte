@@ -2,7 +2,7 @@
   import { generatedSubnets, networkInfo } from "@utils/stores";
 
   const headerClass =
-    "px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider";
+    "px-6 py-3 text-left text-xs font-medium text-slate-800 uppercase tracking-wider";
   const itemClass =
     "text-sm text-gray-900 font-light px-6 py-6 whitespace-nowrap";
   const numberClass =
@@ -34,7 +34,7 @@
 
     <tbody>
       {#each $generatedSubnets as subnet}
-        <tr class="border-b border-indigo-400">
+        <tr class="border-b border-indigo-600">
           <td class={numberClass}>{subnet.name}</td>
           <td class={itemClass}> {subnet.hostsNeeded} </td>
           <td class={itemClass}> {subnet.availableHosts} </td>
