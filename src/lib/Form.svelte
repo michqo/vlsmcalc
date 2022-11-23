@@ -28,7 +28,12 @@
       $generatedSubnets = generatedData[0];
       $networkInfo = generatedData[1];
     } catch (e) {
+      let hostErrShowed = false;
       e.inner.forEach((i: any) => {
+        if (i.path.substring(0, 5) == "hosts" && !hostErrShowed) {
+          alert(i.message);
+          hostErrShowed = true;
+        }
         $errors[`${i.path}`] = i.message;
       });
     }
